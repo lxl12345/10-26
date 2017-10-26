@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+				var username=$('#username').val();
+				var txt=$('#txt').val();
+				$.ajax({
+					url: "http://localhost:3000/lxl",
+					type: "post",
+					data:{username: username,txt: txt},
+					success: function(e) {
+						console.log(e);
+						$('#btn').click(function(){
+							$('.wrap').append('<p>'+e.username+'</p>')
+							$('.wrap').append('<p>'+e.txt+'</p>')
+						})
+					}
+				})
+			})
+		</script>
+		<style type="text/css">
+			h1{
+				text-align: center;
+				color: mediumpurple;
+			}
+			.wrap{
+				width: 900px;
+				height: auto;
+				border: 2px solid deepskyblue;
+				margin: auto;
+			}
+			.footer{
+				width: 880px;
+				height: 50px;
+				background-color: mediumpurple;
+				margin: auto;
+				padding: 0px 10px;
+			}
+			#username{
+				height: 24px;
+				margin: 10px;
+				width: 200px;
+			}
+			#txt{
+				height: 24px;
+				margin: 10px;
+				width: 400px;
+			}
+			#btn{
+				width: 150px;
+				height: 26px;
+				background-color: transparent;
+				margin-left: 40px;
+				outline: none;
+				border: 2px solid #FFFFFF;
+				border-radius:4px ;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1>Skier Dictionary</h1>
+		<div class="wrap">
+			
+		</div>
+		<div class="footer">
+			<form>
+				<input type="text" id="username" name="username"/>
+				<input type="text" id="txt" name='txt'/>
+				<input type="button" id="btn" value="Add Term"/>
+			</form>
+			
+		</div>
+	</body>
+
+</html>
